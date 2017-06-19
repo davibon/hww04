@@ -1,0 +1,21 @@
+div {
+    font-size: 20px;
+}
+
+.title {
+    background-color: yellow;
+    border: solid;
+    border-color: black;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 15px;
+}
