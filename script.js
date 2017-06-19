@@ -29,9 +29,7 @@ function bindInvoice(dataSet) {
 
 function renderInvoice(dataSet) {
     var xScale = d3.scale.linear()
-        .domain([d3.min(dataSet, function (d) {
-            return d.amount;
-        }), d3.max(dataSet, function (d) {
+        .domain([0, d3.max(dataSet, function (d) {
             return d.amount;
         })])
         .range([10, 300]);
@@ -67,7 +65,7 @@ function renderInvoice(dataSet) {
     var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks("5")
+        .ticks("3")
         .tickFormat(function (d) {
             console.log(d);
             return (d / 1000000000) + "G";
