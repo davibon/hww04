@@ -133,7 +133,10 @@
             //                });
             //開始畫x,y軸線 
             var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
-            var yAxis = d3.svg.axis().scale(yScale).orient("left");
+            var yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(function(d) {
+                console.log(d);
+                return (d / 1000000) + "M";
+            });
             d3.select("#invoice2D")
                 .select("g#axisY")
                 .attr("class", "axis")
@@ -174,7 +177,7 @@
             selection.enter().append("option");
             selection.exit().remove();
             //render
-            d3.selectAll("option")
+            d3.selectAll("#invoice2D_select>option")
                 .attr({
                     value: function(d) {
                         return d;
@@ -361,12 +364,10 @@
                 .selectAll("option")
                 .data(fIndustryArr);
 
-            selectionCan.enter().append("option").attr({
-                "class": "canOpt"
-            });
+            selectionCan.enter().append("option");
             selectionCan.exit().remove();
             //render
-            d3.selectAll(".canOpt")
+            d3.select("#canID").selectAll("option")
                 .attr({
                     value: function(d) {
                         return d;
